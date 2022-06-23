@@ -1,3 +1,4 @@
 selenium
 sendgrid
 streamlit
+webdriver-manager
