@@ -1,12 +1,13 @@
 import os
 
-os.system('sbase install geckodriver')
-os.system('ln -s /home/appuser/venv/lib/python3.9/site-packages/selenium/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
-from selenium.webdriver import FirefoxOptions
 from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from webdriver_manager.firefox import GeckoDriverManager
 
 import time
 import streamlit as st
@@ -19,9 +20,13 @@ url = "https://duckduckgo.com/"
 SENDGRID_API_KEY = ""
 
 
-opts = FirefoxOptions()
-opts.add_argument("--headless")
-driver = webdriver.Firefox(options=opts)
+firefoxOptions = Options()
+firefoxOptions.add_argument("--headless")
+service = Service(GeckoDriverManager().install())
+driver = webdriver.Firefox(
+    options=firefoxOptions,
+    service=service,
+)
 
 
 #streamlit
