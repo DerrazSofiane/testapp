@@ -1,26 +1,27 @@
-import os, sys
-import time
-import streamlit as st
-import base64
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import (Mail, Attachment, FileContent, FileName, FileType, Disposition)
+import os
+
+os.system('sbase install geckodriver')
+os.system('ln -s /home/appuser/venv/lib/python3.7/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
+from selenium.webdriver import FirefoxOptions
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.utils import ChromeType
+import time
+import streamlit as st
+import base64
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import (Mail, Attachment, FileContent, FileName, FileType, Disposition)
 
-
-driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 
 url = "https://duckduckgo.com/"
 SENDGRID_API_KEY = ""
 
 
-# os.system('sbase install geckodriver')
-# os.system('ln -s /home/appuser/venv/lib/python3.7/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
+opts = FirefoxOptions()
+opts.add_argument("--headless")
+driver = webdriver.Firefox(options=opts)
 
 
 #streamlit
