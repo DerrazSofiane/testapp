@@ -9,7 +9,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.utils import ChromeType
 
+
+driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 
 url = "https://duckduckgo.com/"
 SENDGRID_API_KEY = ""
@@ -25,7 +29,6 @@ def interface():
    
     #selenium
     if st.button("url de test"):
-        driver = webdriver.Chrome()
         driver.get(url)
 
     #téléchargement sur dossier local
