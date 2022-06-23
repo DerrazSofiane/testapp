@@ -1,7 +1,7 @@
 import os
 
 os.system('sbase install geckodriver')
-os.system('ln -s /home/appuser/venv/lib/python3.7/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
+os.system('ln -s /home/appuser/venv/lib/python3.9/site-packages/selenium/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
 from selenium.webdriver import FirefoxOptions
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
